@@ -1,0 +1,35 @@
+Pad 1-160 entries are 172 bytes long.
+Pad BPM byte data for Pad 1 starts at byte 198, and is two bytes long.
+Pad BPM is in hex format, and 90.00 BPM is the integer value 9000.
+
+It appears that you cannot just copy a sample to a new slot, it requires PADCONF.BIN entries as well to be loaded.
+
+Header:
+0080 - 00??: Project Name??
+
+172 Byte Sample MetaData Structure:
+00A7?- 00A8: Sample Start (stereo sample, 1 sample position change == value change of 4?)
+00b4       : GATE (00000001 is on)
+00b5 - 00b8: LOOP OFF (00 00 00 00) LOOP ON (7F FF FF FF)
+00c4       : BPM SYNC (00000001 is on)
+00c7 - 00c8: Pad1 BPM value (90.00 BPM is 9000)
+
+start point: 00a7/a8'ish
+loop point: 00ce/00d0'ish
+
+Reverse Off to On
+00CE  00 to 04
+00CF  03 to 95
+00d0  74 to 00
+00e0  00 to 01
+
+Sample Name:
+6c20 - 6c37: Pad1 Filename (23 character limit, null terminated)
+6c38 - 6c4f: Pad2 Filename
+
+File Outline:
+Header
+Pad1-Pad160 : 
+
+Pad Metadata & Pad Filenames: 172 (metadata length) + 24 (pad name) * 160 = 31,360 bytes
+Total File size: 52,000 bytes
