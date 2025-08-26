@@ -7,12 +7,17 @@ It appears that you cannot just copy a sample to a new slot, it requires PADCONF
 Header:
 0080 - 00??: Project Name??
 
-172 Byte Sample MetaData Structure:
+172 Byte Per Pad MetaData Structure:
+       ????: Structure Start
 00A7?- 00A8: Sample Start (stereo sample, 1 sample position change == value change of 4?)
+           : NOTE: SP UI Sample Start values over 63(64?) are always off by (start*4 < 512 is +512)
+           : NOTE: If Sample Start > Loop, then Loop value will equal Start value
+       00A8: Least signficant digit
 00b4       : GATE (00000001 is on)
 00b5 - 00b8: LOOP OFF (00 00 00 00) LOOP ON (7F FF FF FF)
 00c4       : BPM SYNC (00000001 is on)
 00c7 - 00c8: Pad1 BPM value (90.00 BPM is 9000)
+00d0 - ????: Loop Point?
 
 start point: 00a7/a8'ish
 loop point: 00ce/00d0'ish
