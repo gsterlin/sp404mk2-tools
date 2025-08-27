@@ -1,0 +1,6 @@
+convert PTNxxxxx.BIN to TXT...
+NOTE: Pattern file appears to be 8 byte aligned
+xxd -c 8 PTN00001.BIN > PTN00001.TXT
+
+convert PTNxxxxx.TXT to BIN...
+xxd -r PTN00001.TXT PTN00001.BIN
