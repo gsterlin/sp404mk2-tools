@@ -12,16 +12,30 @@ Header:?
 Bank Volume
 Volume (x00 127, x01 126, x1B 100)
 ------------------------
-006E       : Bank B Volume
-0070       : Bank A Volume
-0072       : Bank D Volume
-0074       : Bank C Volume
-0076       : Bank F Volume
-0078       : Bank E Volume
-007A       : Bank H Volume
-007C       : Bank G Volume
-007E       : Bank J Volume
-0080       : Bank I Volume
+0012       : 0x00 Bank Tempo, 0x01 Project Tempo?
+0013 - 0014: Project BPM in Dec (ie x2328 is 9000, or 90.00 bpm)
+
+0041 - 0044: Bank A BPM, but div by 2 (ie x4844 is 18500, div by 2 9250 or 92.50 BPM)
+0045 - 0048: Bank B BPM
+0049 - 004C: Bank C BPM
+004D - 0050: Bank D BPM
+0051 - 0054: Bank E BPM
+0055 - 0058: Bank F BPM
+0059 - 005C: Bank G BPM
+005D - 0060: Bank H BPM
+0061 - 0064: Bank I BPM
+0065 - 0068: Bank J BPM
+0069 - 006C: ???
+006D - 006E: Bank B Volume
+006F - 0070: Bank A Volume
+0071 - 0072: Bank D Volume
+0073 - 0074: Bank C Volume
+0075 - 0076: Bank F Volume
+0077 - 0078: Bank E Volume
+0079 - 007A: Bank H Volume
+007B - 007C: Bank G Volume
+007D - 007E: Bank J Volume
+007F - 0080: Bank I Volume
 0081 - 00A0: Project Name, Null Terminated String (A0 null terminator?)
            : NOTE: there might be a directory naming test to try here
 
