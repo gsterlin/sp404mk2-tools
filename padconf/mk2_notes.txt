@@ -8,6 +8,8 @@ Pad BPM is in hex format, and 90.00 BPM is the integer value 9000.
 
 It appears that you cannot just copy a sample to a new slot, it requires PADCONF.BIN entries as well to be loaded.
 
+Does not contain pattern bar length
+
 Header:?
 Bank Volume
 Volume (x00 127, x01 126, x1B 100)
