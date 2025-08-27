@@ -1,23 +1,63 @@
+This file format breakdown is for SP404 mk2 firmware 5.01
+
 Pad 1-160 entries are 172 bytes long.
 Pad BPM byte data for Pad 1 starts at byte 198, and is two bytes long.
 Pad BPM is in hex format, and 90.00 BPM is the integer value 9000.
 
 It appears that you cannot just copy a sample to a new slot, it requires PADCONF.BIN entries as well to be loaded.
 
-Header:
-0080 - 00??: Project Name??
+Header:?
+Bank Volume
+Volume (x00 127, x01 126, x1B 100)
+------------------------
+006E       : Bank B Volume
+0070       : Bank A Volume
+0072       : Bank D Volume
+0074       : Bank C Volume
+0076       : Bank F Volume
+0078       : Bank E Volume
+007A       : Bank H Volume
+007C       : Bank G Volume
+007E       : Bank J Volume
+0080       : Bank I Volume
+0081 - 00A0: Project Name, Null Terminated String (A0 null terminator?)
+           : NOTE: there might be a directory naming test to try here
+
+00A1 - 00A4: ???
 
 172 Byte Per Pad MetaData Structure:
+------------------------
        ????: Structure Start
-00A7?- 00A8: Sample Start (stereo sample, 1 sample position change == value change of 4?)
+00A5 - 00A8: Sample Start (stereo sample, 1 sample position change == value change of 4?)
            : NOTE: SP UI Sample Start values over 63(64?) are always off by (start*4 < 512 is +512)
            : NOTE: If Sample Start > Loop, then Loop value will equal Start value
-       00A8: Least signficant digit
-00b4       : GATE (00000001 is on)
+           : NOTE: Sample Length > ???? add 512
+           : NOTE: Sample Length > ???? add 872
+00a9 - 00ac: Sample End (expect the 512/872 math here)
+00ad - 00b0: Pitch/Speed Volume Setting (x00 - x7F)
+00b1?- 00b4: GATE (00000001 is on, 00000000 is off)
 00b5 - 00b8: LOOP OFF (00 00 00 00) LOOP ON (7F FF FF FF)
-00c4       : BPM SYNC (00000001 is on)
+00b9 - 00bc: ???
+00bd - 00c0: Pad Mute Groups 0x00 - None, 0x01 Group A
+00c1?- 00c4: BPM SYNC (00000001 is on)
 00c7 - 00c8: Pad1 BPM value (90.00 BPM is 9000)
-00d0 - ????: Loop Point?
+00c9?- 00cc: Pad One Shot Mode x20 (GATE blinking), x02 Vari Backing, x04 Vari Ensemble
+00cd - 00d0: Relative Loop Point From Start (00000000 no offset) (00000004 one sample offset)
+           : NOTE: values follow the same 512 (and probably 872 rules) as sample start values
+00d1 - 00d4: ???
+00d5 - 00d8: Pitch (x00 +0 semi, x0c +12 semi)
+00d9 - 00dc: Fine (x00 +0 fine, x03 +0.03 fine)
+00dd - 00e0: Ping Pong Mode (x02 is On)
+00e1 - 00e4: Speed (similar to BPM Value, x2710 is 10000 or 100%, x1388 is 5000 or 50%)
+00e5 - 00e8: Vinyl (01 yes, 00 no)
+00e9 - 00ec: Pan (x40 Center, x41 - R1)
+00ed - 00f0: Pad Link x00 - None, x01 A, x02 B
+00f1 - 00f4: Bus Route (00 Dry, 01 Bus1, 02 Bus2)
+00f5 - 00f8: ???
+00F9?- 00FC: Attack 0x00 to 0x7F?
+00FD?- 0100: Hold 0x00 to 0x7F?
+0101?- 0104: Release 0x00 to 0x7F?
+---- 96 bytes ---
 
 start point: 00a7/a8'ish
 loop point: 00ce/00d0'ish
@@ -31,6 +71,23 @@ Reverse Off to On
 Sample Name:
 6c20 - 6c37: Pad1 Filename (23 character limit, null terminated)
 6c38 - 6c4f: Pad2 Filename
+
+Pad1 Mark Locations 1-15: (60 bytes of data per pad)
+7B25 - 7B28: Mark 1
+7B29 - 7B2C: Mark 2
+7B2D - 7B30: Mark 3
+7B31 - 7B34: Mark 4
+7B35 - 7B38: Mark 5
+7B39 - 7B3C: Mark 6
+7B3D - 7B40: Mark 7
+7B41 - 7B44: Mark 8
+7B45 - 7B48: Mark 9
+7B49 - 7B4C: Mark 10
+7B4D - 7B50: Mark 11
+7B51 - 7B54: Mark 12
+7B55 - 7B58: Mark 13
+7B59 - 7B5C: Mark 14
+7B5D - 7B60: Mark 15
 
 File Outline:
 Header
