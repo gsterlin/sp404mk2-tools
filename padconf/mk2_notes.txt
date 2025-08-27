@@ -1,5 +1,7 @@
 This file format breakdown is for SP404 mk2 firmware 5.01
 
+NOTES: Saving EFX (SHIFT+MARK) does not save effects in this file :/
+
 Pad 1-160 entries are 172 bytes long.
 Pad BPM byte data for Pad 1 starts at byte 198, and is two bytes long.
 Pad BPM is in hex format, and 90.00 BPM is the integer value 9000.

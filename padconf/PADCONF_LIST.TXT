@@ -364,4 +364,8 @@ NOTE: This one is weird... since it *also* makes the directory name changed... s
 0000009E 00 20
 0000009F 00 41
 
-PADCONF041.BIN 
+PADCONF041.BIN DJFX CK1 0.012, CK2 100, CK3 ON -> EFX Saved
+
+NO CHANGE using EFX Saved... likely that this is for entire system, not per project (blah!!!!)
+
+
