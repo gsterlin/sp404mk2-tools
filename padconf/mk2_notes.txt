@@ -52,7 +52,7 @@ Volume (x00 127, x01 126, x1B 100)
            : NOTE: Sample Length > ???? add 512
            : NOTE: Sample Length > ???? add 872
 00a9 - 00ac: Sample End (expect the 512/872 math here)
-00ad - 00b0: Pitch/Speed Volume Setting (x00 - x7F)
+00ad - 00b0: Pitch/Speed Page Volume Setting (x00 - x7F)
 00b1 - 00b4: GATE (00000001 is on, 00000000 is off)
 00b5 - 00b8: LOOP OFF (00 00 00 00) LOOP ON (7F FF FF FF)
 00b9 - 00bc: ???
