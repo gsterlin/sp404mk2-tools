@@ -4,3 +4,26 @@ xxd -c 8 PTN00001.BIN > PTN00001.TXT
 
 convert PTNxxxxx.TXT to BIN...
 xxd -r PTN00001.TXT PTN00001.BIN
+
+End of pattern record
+008c 0000 0000 0000
+
+Post end of pattern record
+xxx0 -     : # of bars x01 is 1, x40 is 64
+xxx1 -     : 
+xxx2 -     : 
+xxx3 -     : 
+xxx4 -     : 
+xxx5 -     : loop start but weird?
+xxx6 -     : loop end x01 is 1, x40 is 64
+xxx7 -     : 
+
+Event Record
+xxx0 -     : # of ticks for the record 00 invalid?  0x01 1, 0xff 127
+xxx1 -     : Pad (x2F (Pad A1) -> xCE (Pad J16?))
+xxx2 -     : 
+xxx3 -     : Chromatic Pitch
+xxx4 -     : Pad Velocity
+xxx5 -     : 
+xxx6 - xxx7: reverse order tick length, -1 (since 0 start), ie 3/4 1 bar is 1440 ticks, 
+           : a 1.1.1 start Gate LAST is 9f05, or x059f is 1439 ticks
